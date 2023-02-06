@@ -10,7 +10,6 @@
   <body>
   	<div class="container-scroller">
   	@include("admin/navbar")
-  		<h1>hello</h1>
   	</div>
 
 
