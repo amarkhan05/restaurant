@@ -44,16 +44,14 @@ class FoodController extends Controller
 
     public function updatefood(Request $request, $id){
         $food = Food::find($id);
-        if (!$request->image == '') {
-            $image = $request->image;
-            $name = time() . '.' . $image->getClientOriginalName();
-            $request->image->move('foodimage', $name);
-        }
-
+        $image = $request->image;
+        $name = time() . '.' . $image->getClientOriginalName();
+        $request->image->move('foodimage', $name);
+        
         $food->title = isset($request->title) ? $request->title : '';
         $food->price = isset($request->price) ? $request->price : '';
         $food->description = isset($request->description) ? $request->description : '';
-        $food->image = isset($request->image) ? $request->image : '';
+        $food->image = isset($name) ? $name : '';
 
         $food->save();
         return redirect()->back();
